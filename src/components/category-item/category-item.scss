@@ -8,6 +8,7 @@
   justify-content: center;
   margin: 0 7.5px 15px;
   overflow: hidden;
+  border: 1px solid white;
 
   &:hover {
     cursor: pointer;
@@ -63,6 +64,7 @@
       opacity: 0.7;
       padding: 10px 25px;
       transition: opacity 0.4s;
+      color: rgb(0, 4, 23);
       
       &:hover {
         opacity: 0.9;
