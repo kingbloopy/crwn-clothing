@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState } from "react";
 import { 
   createAuthUserWithEmailAndPassword,
   createUserDocFromAuth
@@ -20,7 +20,6 @@ const SignUpForm = () => {
 
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { displayName, email, password, confirmPassword } = formFields;
-  const { setCurrentUser } = useContext(UserContext);
 
   const resetFormFields = () => {
     setFormFields(defaultFormFields);
@@ -40,7 +39,6 @@ const SignUpForm = () => {
         password
       );
 
-      setCurrentUser(user);
       await createUserDocFromAuth(user, { displayName });
       resetFormFields();
     } catch (error) {
@@ -48,6 +46,8 @@ const SignUpForm = () => {
         alert('Cannot create user, email already in use.');
       } else if (error.code === 'auth/invalid-email'){
         alert('Invalid email, please try again.');
+      } else if (error.code === 'auth/weak-password') {
+        alert('Password should be at least 6 characters.');
       } else {
         console.log('user creation encountered an error', error);
       }
