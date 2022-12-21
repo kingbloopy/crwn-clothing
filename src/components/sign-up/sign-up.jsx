@@ -7,7 +7,7 @@ import {
 import FormInput from "../form-input/form-input";
 import './sign-up.scss';
 import Button from "../button/button";
-import { UserContext } from "../../contexts/user";
+import { UserContext } from "../../contexts/user.context";
 
   const defaultFormFields = {
     displayName: '',
